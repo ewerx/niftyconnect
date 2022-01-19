@@ -2,17 +2,17 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("Sample Contract", () => {
-    let SampleContract, sampleContract;
+    let ProfileGraph, profileGraph;
 
     beforeEach(async () => {
-        SampleContract = await ethers.getContractFactory("SampleContract");
-        sampleContract = await SampleContract.deploy();
+        ProfileGraph = await ethers.getContractFactory("ProfileGraph");
+        profileGraph = await ProfileGraph.deploy();
     });
 
     it("emit greeting event when greet function is called", async () => {
-        expect(sampleContract.greet())
+        expect(profileGraph.greet())
             .to
-            .emit(sampleContract, "Greet")
+            .emit(profileGraph, "Greet")
             .withArgs("Hello World!");
     });
 
