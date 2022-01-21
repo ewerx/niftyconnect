@@ -1,9 +1,7 @@
+import Register from "./pages/register.js";
+
 function App() {
-  return (
-    <div className="App">
-      Ethereum Fullstack Template
-    </div>
-  );
+  return <Register/>;
 }
 
 export default App;
