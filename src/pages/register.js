@@ -10,22 +10,22 @@ const Register = (props) => {
   const [name, setName] = useState("");
   const [url, setURL] = useState("");
 
-  const connectWalletPressed = async () => { //TODO: connect to wallet
+  const connectWallet = async () => { //TODO: connect to wallet
    
   };
 
-  const onMintPressed = async () => { //TODO: mint profile token
+  const mint = async () => { //TODO: mint profile token
     
   };
 
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+      <button id="walletButton" onClick={connectWallet}>
         {walletAddress.length > 0 ? (
           "Connected: " +
-          String(walletAddress).substring(0, 6) +
+          walletAddress.substring(0, 6) +
           "..." +
-          String(walletAddress).substring(38)
+          walletAddress.substring(38)
         ) : (
           <span>Connect Wallet</span>
         )}
@@ -58,7 +58,7 @@ const Register = (props) => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </form>
-      <button id="mintButton" onClick={onMintPressed}>
+      <button id="mintButton" onClick={mint}>
         Mint Profile
       </button>
       <p id="status">
