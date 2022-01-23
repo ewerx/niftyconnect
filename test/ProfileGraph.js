@@ -37,11 +37,20 @@ describe("Profile Graph", () => {
             await profileGraph.mint(account1.address) // 0
             await profileGraph.mint(account2.address) // 1
 			await expect(profileGraph.connect(account1).follow(1, 0))
-                .to.emit(profileGraph, "NewFollow")
+                .to.emit(profileGraph, "Follow")
                 .withArgs(0, 1);
             await expect(profileGraph.connect(account2).follow(0, 1))
-                .to.emit(profileGraph, "NewFollow")
+                .to.emit(profileGraph, "Follow")
                 .withArgs(1, 0);
+		})
+
+        it("should emit unfollow event on follow", async function () {
+            await profileGraph.mint(account1.address) // 0
+            await profileGraph.mint(account2.address) // 1
+            await profileGraph.connect(account1).follow(1, 0)
+			await expect(profileGraph.connect(account1).unfollow(1, 0))
+                .to.emit(profileGraph, "UnFollow")
+                .withArgs(0, 1);
 		})
 	});
 

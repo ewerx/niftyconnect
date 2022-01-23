@@ -13,8 +13,8 @@ contract ProfileGraph is ProfileToken {
 
     // events
 
-    event NewFollow(uint256 follower, uint256 following);
-    event UnFollow(uint256 follower, uint256 following);
+    event Follow(uint256 follower, uint256 followed);
+    event UnFollow(uint256 follower, uint256 unfollowed);
 
     // functions
 
@@ -22,13 +22,13 @@ contract ProfileGraph is ProfileToken {
         //TODO: check existing?
         //_following[byFollower].push(toFollow);
         //_followers[toFollow].push(byFollower);
-        emit NewFollow(byFollower, toFollow);
+        emit Follow(byFollower, toFollow);
     }
 
     function unfollow(uint256 toUnfollow, uint256 byFollower) public tokenOwner(byFollower) {
         //_following[byFollower].remove(toUnfollow);
         //_followers[toUnfollow].remove(byFollower);
-        emit UnFollow(toUnfollow, byFollower);
+        emit UnFollow(byFollower, toUnfollow);
     }
 
     // modifiers
