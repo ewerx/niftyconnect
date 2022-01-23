@@ -13,9 +13,20 @@ contract ProfileToken is
 {
     using Counters for Counters.Counter;
 
+    // data
+
     Counters.Counter public _tokenIds;
 
+    struct Avatar {
+        address nftContract;
+        uint256 tokenId;
+    }
+
+    // events
+
     event NewProfile(uint256 tokenId, address owner);
+
+    // functions
 
     constructor() {
     }
@@ -34,4 +45,10 @@ contract ProfileToken is
 
         return newProfileId;
     }
+
+    //TODO: interface to link avatar NFT to profile NFT
+
+    //TODO: override ERC721 methods for fetching metadata to wrap the Avatar
+
+    // modifiers
 }

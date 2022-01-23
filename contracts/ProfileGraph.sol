@@ -18,14 +18,14 @@ contract ProfileGraph is ProfileToken {
 
     // functions
 
-    function follow(uint256 toFollow, uint256 byFollower) public tokenOwner(byFollower) {
+    function follow(uint256 toFollow, uint256 byFollower) public tokenExists(toFollow) tokenOwner(byFollower) {
         //TODO: check existing?
         //_following[byFollower].push(toFollow);
         //_followers[toFollow].push(byFollower);
         emit Follow(byFollower, toFollow);
     }
 
-    function unfollow(uint256 toUnfollow, uint256 byFollower) public tokenOwner(byFollower) {
+    function unfollow(uint256 toUnfollow, uint256 byFollower) public tokenExists(toUnfollow) tokenOwner(byFollower) {
         //_following[byFollower].remove(toUnfollow);
         //_followers[toUnfollow].remove(byFollower);
         emit UnFollow(byFollower, toUnfollow);
@@ -33,8 +33,13 @@ contract ProfileGraph is ProfileToken {
 
     // modifiers
 
-    modifier tokenOwner(uint256 _tokenId) {
-        require(msg.sender == ERC721.ownerOf(_tokenId));
+    modifier tokenOwner(uint256 tokenId) {
+        require(msg.sender == ERC721.ownerOf(tokenId));
+        _;
+    }
+
+    modifier tokenExists(uint256 tokenId)  {
+        require(_exists(tokenId));
         _;
     }
 }
