@@ -14,11 +14,6 @@ async function main() {
     );
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
-    // const ProfileToken = await hre.ethers.getContractFactory("ProfileToken");
-    // const ProfileGraph = await hre.ethers.getContractFactory("ProfileGraph");
-    // const tokenContract = await ProfileToken.deploy();
-    // const graphContract = await ProfileGraph.deploy();
-
     const [ProfileToken, ProfileGraph] = await Promise.all([
         await hre.ethers.getContractFactory("ProfileToken"),
         await hre.ethers.getContractFactory("ProfileGraph")
@@ -43,7 +38,7 @@ async function main() {
 
 function saveFrontendFiles(contract, name) {
     const fs = require("fs");
-    const path = require('path');
+    const path = require("path");
 
     const contractsDir = path.join(__dirname, "..", "/src/abis");
 
