@@ -52,17 +52,18 @@ function saveFrontendFiles(contract, name) {
     }
 
     let artifact = {};
+    // if artifact already exists, we use it and just add a new key to it
     if (fs.existsSync(`${contractsDir}/contract-address.json`)) {
         artifact = JSON.parse(fs.readFileSync(`${contractsDir}/contract-address.json`));
     }
-    artifact[`${name}`] = contract.address;
+    artifact[name] = contract.address;
 
     fs.writeFileSync(
         `${contractsDir}/contract-address.json`,
         JSON.stringify(artifact, undefined, 2)
     );
 
-    const ContractArtifact = artifacts.readArtifactSync(`${name}`);
+    const ContractArtifact = artifacts.readArtifactSync(name);
 
     fs.writeFileSync(
         `${contractsDir}/${name}Contract.json`,
