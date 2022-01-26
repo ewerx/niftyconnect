@@ -83,9 +83,7 @@ export default function mintProfile() {
           </Link>
         </Grid>
       </Grid>
-      {/* <p id="status">
-        {status}
-      </p> */}
+      
     </div>
   );
 }

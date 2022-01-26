@@ -1,3 +1,5 @@
+//Demo profiles for recommendation. Ideally an array of existing user profiles and metadata.
+
 const profiles = [
     {
       key: 1,

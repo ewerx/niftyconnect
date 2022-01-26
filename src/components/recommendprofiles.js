@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./profilecard";
-import profiles from "../demoprofiles.js";
+import profiles from "../demoprofiles.js";  {/* Importing Demo profiles */}
 import { Grid } from "@mui/material";
 
 require('react-dom');

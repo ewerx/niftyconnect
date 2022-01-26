@@ -19,13 +19,14 @@ export default function Home() {
         sx={{ pt: 10,
           pb: 60 }}
       >
+      {/* Connect Wallet Button, if already registered proceed to homepage else to mint-profile page */}
         <Grid item align="center" sx={{ pt: 6 }}>
-          <ConnectWallet />
+          <ConnectWallet />                       
         </Grid>
         <Grid item align="center">
           <Link to="/profilehome">
             <Button variant="outlined" color="primary">
-              Wallet Connected
+              Wallet Connected              {/* Dummy button to visualize the user-flow */}
             </Button>
           </Link>
         </Grid>
