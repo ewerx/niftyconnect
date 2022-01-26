@@ -14,25 +14,11 @@ async function main() {
     );
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
-    const [ProfileToken, ProfileGraph] = await Promise.all([
-        await hre.ethers.getContractFactory("ProfileToken"),
-        await hre.ethers.getContractFactory("ProfileGraph")
-    ]);
+    const ProfileGraph = await hre.ethers.getContractFactory("ProfileGraph");
+    const graphContract = await ProfileGraph.deploy();
+    await graphContract.deployed();
+    console.log("Contract address:", graphContract.address);
 
-    const [tokenContract, graphContract] = await Promise.all([
-        await ProfileToken.deploy(),
-        await ProfileGraph.deploy()
-    ]);
-
-    await Promise.all([
-        await tokenContract.deployed(),
-        await graphContract.deployed()
-    ]);
-
-    console.log("ProfileToken Contract address:", tokenContract.address);
-    console.log("ProfileGraph Contract address:", graphContract.address);
-
-    saveFrontendFiles(tokenContract, "ProfileToken");
     saveFrontendFiles(graphContract, "ProfileGraph");
 }
 
