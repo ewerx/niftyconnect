@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "hardhat:test": "npx hardhat test",
+    "hardhat:deploy": "npx hardhat run scripts/deploy.js --network rinkeby"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +50,7 @@
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.5.3",
-    "hardhat": "^2.8.2"
+    "hardhat": "^2.8.2",
+    "hardhat-gas-reporter": "^1.0.7"
   }
 }
