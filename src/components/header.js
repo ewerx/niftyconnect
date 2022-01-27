@@ -26,7 +26,7 @@ export default function Header() {
                 variant="h6"
                 color="black"
                 sx={{ pt: 0,
-                    pb: 5 }}
+                    pb: 2 }}
                 
               >
                 Create your decentralised social graph <span> 😎 </span>

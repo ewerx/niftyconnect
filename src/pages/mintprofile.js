@@ -78,9 +78,9 @@ export default function mintProfile() {
           </form>
         </Grid>
         <Grid item md={12} sx={{ pt: 5 }}>
-          <Link to="/profilehome">
+         
             <MintProfile />
-          </Link>
+         
         </Grid>
       </Grid>
       {/* <p id="status">

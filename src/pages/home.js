@@ -16,17 +16,17 @@ export default function Home() {
         container
         flexDirection="column"
         justifyContent="center"
-        sx={{ pt: 10,
+        sx={{ pt: 5,
           pb: 60 }}
       >
-        <Grid item align="center" sx={{ pt: 6 }}>
+        <Grid item align="center" sx={{ pt: 3 }}>
           <ConnectWallet />
         </Grid>
-        <Grid item align="center">
-          <Link to="/profilehome">
-            <Button variant="outlined" color="primary">
-              Wallet Connected
-            </Button>
+        <Grid item align="center" sx={{pt: 1}}>
+          <Link to="/mintprofile">
+          <Button variant="contained" color="primary">
+      Mint Token
+    </Button>
           </Link>
         </Grid>
       </Grid>
