@@ -1,17 +1,33 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
+import { useState } from "react";
+import { requestAccount } from "../../utils/common.js";
 
 require('react-dom');
 window.React2 = require('react');
 console.log(window.React1 === window.React2);
 
+
+
 export default function ConnectWallet() {
+
+  const [login, setLogin] = useState(false);
+  const [account, setAccount] = useState("0x");
+
+async function handleConnectWallet() {
+  const accounts = await requestAccount();
+  setLogin(true);
+  setAccount(accounts[0]);
+}
+
   return (
-    <Link to="/mintprofile">
-      <Button variant="outlined" color="primary">
-        Connect Wallet
-      </Button>
-    </Link>
+    <>
+      {
+            !login
+            ? <Button variant="contained" onClick={handleConnectWallet}>Connect Wallet</Button> 
+            : <Redirect to="/mintprofile" />
+          }
+          </>
   );
 }
