@@ -12,4 +12,4 @@ function getContract(contractAddr, artifact) {
     return contract;
 }
 
-export { requestAccount, getContract }
+export { requestAccount, getContract };
