@@ -21,7 +21,6 @@ export default function Dapp() {
 
   async function handleConnectWallet() {
     const accounts = await requestAccount();
-    console.log("accounts %s", accounts);
     setLogin(true);
     setAccount(accounts[0]);
   }

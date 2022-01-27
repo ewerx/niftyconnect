@@ -2,7 +2,7 @@ import { requestAccount, getContract } from "./common";
 
 async function mint(contractAddr, artifact, walletAddr) {
   if (typeof window.ethereum !== "undefined") {
-    console.log('MetaMask is installed!');
+    console.log("MetaMask is installed!");
     await requestAccount();
 
     const contract = getContract(contractAddr, artifact);
