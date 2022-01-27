@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { Redirect } from 'react-router-dom'
 import { useState } from "react";
 import { requestAccount } from "../../utils/common.js";
 
@@ -26,7 +25,7 @@ async function handleConnectWallet() {
       {
             !login
             ? <Button variant="contained" onClick={handleConnectWallet}>Connect Wallet</Button> 
-            : <Redirect to="/mintprofile" />
+            : <Button variant="outlined">{account.substring(0,7)} Connected</Button>
           }
           </>
   );
