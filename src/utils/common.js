@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
 async function requestAccount() {
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    return window.ethereum.request({ method: 'eth_requestAccounts' });
 }
 
 function getContract(contractAddr, artifact) {
