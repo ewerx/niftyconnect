@@ -56,8 +56,7 @@ export default function Home() {
                       
                     : <>
                         <Button variant="outlined">{account.substring(0,7)} Connected</Button>
-                        <Connected pExists={profileExist} />
-                          
+                        <Connected pExists={profileExist} />        {/* proped component to either link to '/mintprofile' or 'profilehome' */}   
                        </>                 
                 }
             </Grid>          

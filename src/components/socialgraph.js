@@ -1,16 +1,14 @@
 import React, { useState, useEffect} from "react";
 import { Grid, Button } from "@mui/material";
 import { requestAccount } from "../utils/common";
-import { getBalance } from "../utils";
-import contractArtifact from "../abis/ProfileGraphContract.json";
-import contractAddress from "../abis/contract-address.json";
+
+require('react-dom');
+window.React2 = require('react');
+console.log(window.React1 === window.React2);
 
 export default function Socialgraph() {
 
-  const CONTRACT_ADDR = contractAddress.ProfileGraph;
-
   const [account, setAccount] = useState("");
-  const balance = getBalance(CONTRACT_ADDR, contractArtifact, account);
 
   useEffect(async () => {
     const accounts = await requestAccount();
@@ -30,7 +28,6 @@ export default function Socialgraph() {
       </Grid>
       <Grid item md={6} textAlign="center" sx={{height: '40%', pt: 0}}>
         <h1>ape102.eth</h1>
-        <p>{balance}</p>
       </Grid>
       <Grid item md={6} textAlign="center">
         <h1>Followers</h1>

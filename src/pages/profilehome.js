@@ -8,7 +8,7 @@ import Socialgraph from "../components/socialgraph.js";
 export default function profileHome() {
   return (
     <>
-      <StyledEngineProvider injectFirst>
+      {/* <StyledEngineProvider injectFirst> */}
         <Header />
         <Grid
           container
@@ -17,7 +17,7 @@ export default function profileHome() {
           spacing="50"
           sx={{ pt: 10 }}
         >
-          <Grid item md={8} direction="row" justifyContent="center">
+          <Grid item md={8} alignItems="center">
             <Socialgraph />
           </Grid>
           <Grid item md={4}>
@@ -25,7 +25,7 @@ export default function profileHome() {
             <RecommendProfiles />
           </Grid>
         </Grid>
-      </StyledEngineProvider>
+      {/* </StyledEngineProvider> */}
     </>
   );
 }

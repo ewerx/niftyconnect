@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { requestAccount } from "../../utils/common.js";
 
+require('react-dom');
+window.React2 = require('react');
+console.log(window.React1 === window.React2);
+
 export default function ConnectWallet() {
 
   const [connected, setConnected] = useState(false);      // MM Wallet connection state
