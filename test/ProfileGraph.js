@@ -49,7 +49,7 @@ describe("Profile Graph", () => {
             await profileGraph.mint(account2.address) // 1
             await profileGraph.connect(account1).follow(1, 0)
 			await expect(profileGraph.connect(account1).unfollow(1, 0))
-                .to.emit(profileGraph, "UnFollow")
+                .to.emit(profileGraph, "Unfollow")
                 .withArgs(0, 1);
 		})
 	});
