@@ -8,7 +8,7 @@ import ProfileHome from "./pages/profilehome.js";
 export default function App() {
   return (
     <>
-    {/* <Dapp /> */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="mintprofile" element={<MintProfile />} />

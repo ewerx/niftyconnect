@@ -1,3 +1,5 @@
+// recommend profiles component on right side of profilehome page, below header
+
 import React from "react";
 import { Grid } from "@mui/material";
 import Profile from "./profilecard";

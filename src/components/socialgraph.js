@@ -1,6 +1,9 @@
+// social graph component (on left portion of profilehome, below header)
+
 import React, { useState, useEffect} from "react";
 import { Grid, Button } from "@mui/material";
 import { requestAccount } from "../utils/common";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 require('react-dom');
 window.React2 = require('react');
@@ -19,21 +22,21 @@ export default function Socialgraph() {
     <Grid container direction="row" justifyContent="center" spacing="50">
       <Grid item md={12} textAlign="center">
         <h1>Social Graph</h1>
-        <Button variant="outlined" sx={{height: '15%', pb: 0}}>
-          <p>{account.substring(0,4)}***{account.substring(4,7)} Connected</p>
-        </Button>
       </Grid>
       <Grid item md={6} textAlign="center" sx={{height: '40%', pt: 0}}>
+            {/* vv PFP token image should be mapped here */}
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHIolqCfnkvob1BEoALzK3wZdwYAEmAvUuOtAi8IwSshYzogYSz6QO_TBPsyGScmKlMgg&usqp=CAU" alt="" />
-      </Grid>
-      <Grid item md={6} textAlign="center" sx={{height: '40%', pt: 0}}>
         <h1>ape102.eth</h1>
       </Grid>
-      <Grid item md={6} textAlign="center">
-        <h1>Followers</h1>
+      <Grid item md={6} textAlign="center" sx={{height: '40%', pt: 0}}>
+        <h3>Address</h3>
+          <p>{account}</p>  
       </Grid>
       <Grid item md={6} textAlign="center">
-        <h1>Following</h1>
+        <h1>Followers</h1>  {/* List followers and follower count of connected user*/}
+      </Grid>
+      <Grid item md={6} textAlign="center">
+        <h1>Following</h1>  {/* List followings and following count of connected user*/}
       </Grid>
     </Grid>
   );

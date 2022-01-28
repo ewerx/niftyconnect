@@ -1,5 +1,6 @@
+// profile home page
+
 import * as React from "react";
-import { StyledEngineProvider } from "@mui/material/styles";
 import { Grid } from "@mui/material";
 import Header from "../components/header.js";
 import RecommendProfiles from "../components/recommendprofiles";
@@ -18,11 +19,11 @@ export default function profileHome() {
           sx={{ pt: 10 }}
         >
           <Grid item md={8} alignItems="center">
-            <Socialgraph />
+            <Socialgraph />      {/* Social Graph of the connected user */}
           </Grid>
           <Grid item md={4}>
             <h1>You may know</h1>
-            <RecommendProfiles />
+            <RecommendProfiles /> {/* Map users here from subgraph */}
           </Grid>
         </Grid>
       {/* </StyledEngineProvider> */}
