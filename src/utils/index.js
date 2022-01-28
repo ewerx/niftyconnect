@@ -9,7 +9,7 @@ async function mint(contractAddr, artifact, walletAddr) {
 
     try {
       const transaction = await contract.mint(walletAddr);
-      return transaction.wait();
+      await transaction.wait();
     } catch (err) {
       console.error(err, "minting error");
     }

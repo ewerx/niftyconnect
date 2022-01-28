@@ -65,25 +65,34 @@ export default function Dapp() {
         <Grid>
           {
             !login
-            ? <Button variant="contained" onClick={handleConnectWallet}>Connect Wallet</Button> 
-            : <Button variant="outlined">{account}</Button>
+              ? <Button variant="contained" onClick={handleConnectWallet}>Connect Wallet</Button>
+              : <Button variant="outlined">{account}</Button>
           }
         </Grid>
-        <Grid>
-          <Button variant="contained" onClick={handleMint}>Mint NFT</Button>
-        </Grid>
-        <Grid>
-          <TextField id="standard-basic" label="from TokenId" variant="standard" onChange={(e) => setFollowRequester(e.target.value)}/>
-          <TextField id="standard-basic" label="to TokenId" variant="standard" onChange={(e) => setFollowed(e.target.value)}/>
-          <Button variant="text" onClick={handleFollow}>Follow</Button>
-        </Grid>
-        <Grid>
-          <TextField id="standard-basic" label="from TokenId" variant="standard" onChange={(e) => setUnfollowRequester(e.target.value)}/>
-          <TextField id="standard-basic" label="to TokenId" variant="standard" onChange={(e) => setUnfollowed(e.target.value)}/>
-          <Button variant="text" onClick={handleUnfollow}>Follow</Button>
-        </Grid>
+        <>
+          {
+            login
+              ?
+              <>
+                <Grid>
+                  <Button variant="contained" onClick={handleMint}>Mint NFT</Button>
+                </Grid>
+                <Grid>
+                  <TextField id="standard-basic" label="from TokenId" variant="standard" onChange={(e) => setFollowRequester(e.target.value)} />
+                  <TextField id="standard-basic" label="to TokenId" variant="standard" onChange={(e) => setFollowed(e.target.value)} />
+                  <Button variant="text" onClick={handleFollow}>Follow</Button>
+                </Grid>
+                <Grid>
+                  <TextField id="standard-basic" label="from TokenId" variant="standard" onChange={(e) => setUnfollowRequester(e.target.value)} />
+                  <TextField id="standard-basic" label="to TokenId" variant="standard" onChange={(e) => setUnfollowed(e.target.value)} />
+                  <Button variant="text" onClick={handleUnfollow}>Unfollow</Button>
+                </Grid>
+              </>
+              : <></>
+          }
+        </>
       </Stack>
     </Container>
-    
+
   );
 }
