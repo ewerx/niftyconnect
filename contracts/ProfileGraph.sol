@@ -8,33 +8,33 @@ contract ProfileGraph is ProfileToken {
 
     // data
 
-    //mapping(uint256 => uint256[]) public _followers;
-    //mapping(uint256 => uint256[]) public _following;
+    mapping(uint256 => mapping(uint256 => bool)) public followings;
 
     // events
 
     event Follow(uint256 follower, uint256 followed);
-    event UnFollow(uint256 follower, uint256 unfollowed);
+    event Unfollow(uint256 follower, uint256 unfollowed);
 
     // functions
 
     function follow(uint256 toFollow, uint256 byFollower) public tokenOwner(byFollower) {
-        //TODO: check existing?
-        //_following[byFollower].push(toFollow);
-        //_followers[toFollow].push(byFollower);
+        require(toFollow != byFollower, "self");
+        require(followings[byFollower][toFollow] == false, "duplicate");
+        followings[byFollower][toFollow] = true;
         emit Follow(byFollower, toFollow);
     }
 
     function unfollow(uint256 toUnfollow, uint256 byFollower) public tokenOwner(byFollower) {
-        //_following[byFollower].remove(toUnfollow);
-        //_followers[toUnfollow].remove(byFollower);
-        emit UnFollow(byFollower, toUnfollow);
+        require(toUnfollow != byFollower, "self");
+        require(followings[byFollower][toUnfollow] == true, "not followed");
+        followings[byFollower][toUnfollow] = false;
+        emit Unfollow(byFollower, toUnfollow);
     }
 
     // modifiers
 
-    modifier tokenOwner(uint256 _tokenId) {
-        require(msg.sender == ERC721.ownerOf(_tokenId));
+    modifier tokenOwner(uint256 tokenId) {
+        require(msg.sender == ERC721.ownerOf(tokenId));
         _;
     }
 }
