@@ -15,16 +15,9 @@ contract ProfileToken is
 
     Counters.Counter public _tokenIds;
 
-    mapping (address => bool) public tokenExists;
-
     event NewProfile(uint256 tokenId, address owner);
 
     constructor() {
-    }
-
-    //check if connected wallet-address already has a tokenID
-    function checkEntry(address _address) external pure returns(bool) {
-        return tokenExists[_address];
     }
 
     // contract owner can mint to anyone, anyone can mint to themself, unlimited supply
@@ -33,8 +26,6 @@ contract ProfileToken is
 
         uint256 newProfileId = _tokenIds.current();
         _safeMint(to, newProfileId);
-
-        tokenExists[to] = true;
 
         //console.log("Minted profile: %s", newProfileId);
         emit NewProfile(newProfileId, to);
