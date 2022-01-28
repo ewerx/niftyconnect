@@ -33,6 +33,15 @@ describe("Profile Graph", () => {
                 .to.be.revertedWith("mint not allowed");
         })
 
+        it("should revert when minting another NFT from the same account", async function () {
+            await expect(profileGraph.connect(account1).mint(account1.address))
+                .to.emit(profileGraph, "NewProfile")
+                .withArgs(0, account1.address);            
+            await expect(profileGraph.connect(account1).mint(account1.address))
+                .to.be.revertedWith("already minted");
+        })
+
+
         it("should emit follow event on follow", async function () {
             await profileGraph.mint(account1.address) // 0
             await profileGraph.mint(account2.address) // 1
@@ -53,33 +62,29 @@ describe("Profile Graph", () => {
                 .withArgs(0, 1);
         })
 
-        it("TBD: should throw error when trying to repeat follow again", async function () {
+        it("To be fixed: should throw error when trying to repeat follow again", async function () {
             await profileGraph.mint(account1.address) // 0
             await profileGraph.mint(account2.address) // 1
             await expect(profileGraph.connect(account1).follow(1, 0))
                 .to.emit(profileGraph, "Follow")
                 .withArgs(0, 1);
             await expect(profileGraph.connect(account1).follow(1, 0))
-                .to.emit(profileGraph, "Can't follow on existing following")
-                .withArgs(0, 1);                
+                .to.be.revertedWith("Can't follow on existing following");           
             })
 
-        it("TBD: should throw error when trying to follow herself", async function () {
+        it("To be fixed: should throw error when trying to follow herself", async function () {
             await profileGraph.mint(account1.address) // 0
             await expect(profileGraph.connect(account1).follow(0, 0))
-                .to.emit(profileGraph, "Can't Follow on herself")
-                .withArgs(0, 0);
+                .to.be.revertedWith("Can't Follow on herself");     
         })
 
-        it("should throw error when unfollow action on empty graph", async function () {
+        it("To be fixed: should throw error when unfollow on nonexsiting follow", async function () {
             await profileGraph.mint(account1.address) // 0
             await profileGraph.mint(account2.address) // 1
             await profileGraph.connect(account1).follow(0, 1)
             await expect(profileGraph.connect(account1).unfollow(1, 0))
-                .to.emit(profileGraph, "UnFollow can't execute")
-                .withArgs(0, 1);
+                .to.be.revertedWith("UnFollow can't execute on nonexsiting follow");                  
         })
-
 
     });
 

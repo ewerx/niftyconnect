@@ -23,7 +23,7 @@ contract ProfileToken is
     // contract owner can mint to anyone, anyone can mint to themself, unlimited supply
     function mint(address to) public returns (uint256) {
         require(msg.sender == owner() || msg.sender == to, "mint not allowed");
-
+        require( this.balanceOf(msg.sender) ==0, "already minted");  //one address one profile NFT
         uint256 newProfileId = _tokenIds.current();
         _safeMint(to, newProfileId);
 
