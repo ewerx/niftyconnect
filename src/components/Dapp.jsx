@@ -38,7 +38,7 @@ export default function Dapp() {
   async function handleFollow() {
     setFollowLoading(true);
     try {
-      await follow(CONTRACT_ADDR, contractArtifact, followRequester, followed);
+      await follow(CONTRACT_ADDR, contractArtifact, followed, followRequester);
     } catch (err) {
       console.error("handleFollow error");
     }
@@ -50,7 +50,7 @@ export default function Dapp() {
   async function handleUnfollow() {
     setUnfollowLoading(true);
     try {
-      await unfollow(CONTRACT_ADDR, contractArtifact, unfollowRequester, unfollowed);
+      await unfollow(CONTRACT_ADDR, contractArtifact, unfollowed, unfollowRequester);
     } catch (err) {
       console.error("handleUnfollow error");
     }
@@ -78,13 +78,37 @@ export default function Dapp() {
                   <Button variant="contained" onClick={handleMint}>Mint NFT</Button>
                 </Grid>
                 <Grid>
-                  <TextField id="standard-basic" label="from TokenId" variant="standard" onChange={(e) => setFollowRequester(e.target.value)} />
-                  <TextField id="standard-basic" label="to TokenId" variant="standard" onChange={(e) => setFollowed(e.target.value)} />
+                  <TextField 
+                    id="standard-basic"
+                    variant="standard"
+                    label="requester NFT"
+                    value={followRequester}
+                    onChange={(e) => setFollowRequester(e.target.value)}
+                  />
+                  <TextField 
+                    id="standard-basic" 
+                    variant="standard" 
+                    label="NFT to follow"
+                    value={followed}
+                    onChange={(e) => setFollowed(e.target.value)} 
+                  />
                   <Button variant="text" onClick={handleFollow}>Follow</Button>
                 </Grid>
                 <Grid>
-                  <TextField id="standard-basic" label="from TokenId" variant="standard" onChange={(e) => setUnfollowRequester(e.target.value)} />
-                  <TextField id="standard-basic" label="to TokenId" variant="standard" onChange={(e) => setUnfollowed(e.target.value)} />
+                  <TextField 
+                    id="standard-basic" 
+                    variant="standard"
+                    label="requester NFT"
+                    value={unfollowRequester}
+                    onChange={(e) => setUnfollowRequester(e.target.value)} 
+                  />
+                  <TextField 
+                    id="standard-basic" 
+                    variant="standard" 
+                    label="NFT to unfollow"
+                    value={unfollowed}
+                    onChange={(e) => setUnfollowed(e.target.value)} 
+                  />
                   <Button variant="text" onClick={handleUnfollow}>Unfollow</Button>
                 </Grid>
               </>
