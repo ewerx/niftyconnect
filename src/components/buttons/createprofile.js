@@ -7,7 +7,7 @@ console.log(window.React1 === window.React2);
 
 export default function CreateProfile() {
   return (
-    <Button onclick={() => setFollowStatus(initialCount)} variant="outlined">
+    <Button variant="outlined">
       Create Profile
     </Button>
   );

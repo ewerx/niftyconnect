@@ -1,7 +1,8 @@
 import React from "react";
+import { Grid } from "@mui/material";
 import Profile from "./profilecard";
 import profiles from "../demoprofiles.js"; {/* Importing Demo profiles */}
-import { Grid } from "@mui/material";
+
 
 require('react-dom');
 window.React2 = require('react');
@@ -12,7 +13,8 @@ export default function Recommend() {
     <Grid container direction="row" justifyContent="center" spacing="50">
       {profiles.map((pfp) => (
         <Grid item>
-          <Profile                                {/* Mapping demo profiles to Profile component */}
+        {/* Mapping demo profiles to Profile component */}
+          <Profile                                
             key={pfp.key}
             ens={pfp.ens}
             img={pfp.imgURL}
