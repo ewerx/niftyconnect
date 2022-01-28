@@ -22,6 +22,7 @@ contract ProfileGraph is ProfileToken {
         //TODO: check existing?
         //_following[byFollower].push(toFollow);
         //_followers[toFollow].push(byFollower);
+        require ( toFollow != byFollower, "self-following is not supported");
         emit Follow(byFollower, toFollow);
     }
 

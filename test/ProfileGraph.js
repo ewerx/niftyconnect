@@ -23,9 +23,9 @@ describe("Profile Graph", () => {
             await expect(profileGraph.connect(owner).mint(account1.address))
                 .to.emit(profileGraph, "NewProfile")
                 .withArgs(0, account1.address);
-            await expect(profileGraph.connect(account1).mint(account1.address))
+            await expect(profileGraph.connect(account2).mint(account2.address))  
                 .to.emit(profileGraph, "NewProfile")
-                .withArgs(1, account1.address);
+                .withArgs(1, account2.address);
         })
 
         it("should revert when minting to another account", async function () {
@@ -75,7 +75,7 @@ describe("Profile Graph", () => {
         it("To be fixed: should throw error when trying to follow herself", async function () {
             await profileGraph.mint(account1.address) // 0
             await expect(profileGraph.connect(account1).follow(0, 0))
-                .to.be.revertedWith("Can't Follow on herself");     
+                .to.be.revertedWith("self-following is not supported");     
         })
 
         it("To be fixed: should throw error when unfollow on nonexsiting follow", async function () {
