@@ -5,10 +5,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);
-
 export default function ProfileCard(props) {
   return (
     <>

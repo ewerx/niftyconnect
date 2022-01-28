@@ -1,7 +1,9 @@
+// Not being used right now
+
 import { useState } from "react";
 import contractArtifact from "../abis/ProfileGraphContract.json";
-import contractAddress from "../abis/contract-address.json"
-import { mint, follow, unfollow } from "../utils";
+import contractAddress from "../abis/contract-address.json";
+import { mint, follow, unfollow, authorize } from "../utils";
 import { requestAccount } from "../utils/common";
 import { Button, Container, Grid, Stack, TextField } from "@mui/material";
 

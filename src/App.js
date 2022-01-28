@@ -13,6 +13,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="mintprofile" element={<MintProfile />} />
         <Route path="profilehome" element={<ProfileHome />} />
+        <Route path="dapp" element={<Dapp />} />
       </Routes>
     </>
   );

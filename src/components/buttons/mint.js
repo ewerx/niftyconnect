@@ -5,10 +5,6 @@ import contractArtifact from "../../abis/ProfileGraphContract.json";
 import contractAddress from "../../abis/contract-address.json";
 import { mint, follow, unfollow } from "../../utils";
 
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);
-
 export default function Mint() {
 
   const [, setMintLoading] = useState(false);
