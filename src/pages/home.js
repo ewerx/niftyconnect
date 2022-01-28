@@ -20,15 +20,15 @@ export default function Home() {
           pb: 60 }}
       >
         <Grid item align="center" sx={{ pt: 3 }}>
-          <ConnectWallet />
+          <ConnectWallet />                               // Redirects user to social graph page if already have address=>tokenID else to mint profile page.
         </Grid>
-        <Grid item align="center" sx={{pt: 1}}>
+        {/* <Grid item align="center" sx={{pt: 1}}>
           <Link to="/mintprofile">
           <Button variant="contained" color="primary">
       Mint Token
     </Button>
           </Link>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );
