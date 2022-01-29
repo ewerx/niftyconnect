@@ -1,3 +1,4 @@
+const { Avatar } = require("@mui/material");
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -8,6 +9,9 @@ describe("Profile Graph", () => {
     beforeEach(async () => {
         ProfileGraph = await ethers.getContractFactory("ProfileGraph");
         profileGraph = await ProfileGraph.deploy();
+
+        DappcampWarriors = await ethers.getContractFactory("DappcampWarriors");
+        avatar = await DappcampWarriors.deploy();
 
         const accounts = await ethers.getSigners();
 		owner = accounts[0];
@@ -85,5 +89,28 @@ describe("Profile Graph", () => {
                 .to.be.revertedWith("not followed");                  
         })
 	});
+
+    describe("avatar wrap", function () {
+        it("should emit SetAvatar event with tokenURI", async function () {
+            await profileGraph.mint(account1.address) // 0
+            await avatar.mint(account1.address);
+            const avatarURI = await avatar.tokenURI(0);
+            await avatar.mint(account2.address);
+			await expect(profileGraph.connect(account1).setAvatar(avatar.address, 0, 0))
+                .to.emit(profileGraph, "SetAvatar")
+                .withArgs(0, avatar.address, 0, avatarURI);
+		})
+
+        it("should return tokenURI", async function () {
+            await profileGraph.mint(account2.address) // 0
+            await avatar.mint(account2.address);
+            await avatar.mint(account2.address);
+            const avatarURI = await avatar.tokenURI(1);
+            // console.log(avatarURI);
+            await profileGraph.connect(account2).setAvatar(avatar.address, 1, 0); // set avatar for profile 0 to avatar 1
+            const tokenURI = await profileGraph.tokenURI(0);
+			expect(tokenURI).to.equal(avatarURI);
+		})
+    });
 
 });
