@@ -12,8 +12,8 @@ contract ProfileGraph is ProfileToken {
 
     // events
 
-    event Follow(uint256 follower, uint256 followed);
-    event Unfollow(uint256 follower, uint256 unfollowed);
+    event Follow(uint256 indexed follower, uint256 indexed followed);
+    event Unfollow(uint256 indexed follower, uint256 indexed unfollowed);
 
     // functions
 
@@ -34,7 +34,8 @@ contract ProfileGraph is ProfileToken {
     // modifiers
 
     modifier tokenOwner(uint256 tokenId) {
-        require(msg.sender == ERC721.ownerOf(tokenId));
+        // console.log("profile %s owned by %s, sender %s", tokenId, ERC721.ownerOf(tokenId), msg.sender);
+        require(msg.sender == ERC721.ownerOf(tokenId), "not owner");
         _;
     }
 }

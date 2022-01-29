@@ -35,11 +35,7 @@ export default function Home() {
       }
 
   return (
-   <div
-      style={{
-        backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/0/05/Sna_large.png")`
-      }}
-    >
+   <div>
        <Header />  {/* Header section containing site name and desc. */}
           <Grid
             container
