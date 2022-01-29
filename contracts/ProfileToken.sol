@@ -38,6 +38,7 @@ contract ProfileToken is IERC165,ERC165,
 
         _safeMint(to, newProfileId);
 
+
         emit NewProfile(newProfileId, to);
 
         _tokenIds.increment();
