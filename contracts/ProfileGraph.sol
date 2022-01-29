@@ -34,7 +34,8 @@ contract ProfileGraph is ProfileToken {
     // modifiers
 
     modifier tokenOwner(uint256 tokenId) {
-        require(msg.sender == ERC721.ownerOf(tokenId));
+        // console.log("profile %s owned by %s, sender %s", tokenId, ERC721.ownerOf(tokenId), msg.sender);
+        require(msg.sender == ERC721.ownerOf(tokenId), "not owner");
         _;
     }
 }
