@@ -76,7 +76,7 @@ describe("Profile Graph", () => {
                 .to.be.revertedWith("not followed");                  
         })
 
-        it("To be fixed: should throw error when unfollow on nonexsiting follow(2)", async function () {
+        it("should throw error when unfollow on nonexsiting follow (2)", async function () {
             await profileGraph.mint(account1.address) // 0
             await profileGraph.mint(account2.address) // 1
             await profileGraph.mint(account2.address) // 2
