@@ -6,7 +6,7 @@ import Header from "../components/header.js";
 import RecommendProfiles from "../components/recommendprofiles";
 import Socialgraph from "../components/socialgraph.js";
 
-export default function profileHome() {
+export default function ProfileHome() {
   return (
     <>
       {/* <StyledEngineProvider injectFirst> */}

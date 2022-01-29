@@ -27,6 +27,7 @@ async function mint(contractAddr, artifact, walletAddr) {
     try {
       const transaction = await contract.mint(walletAddr);
       await transaction.wait();
+      contract.on('NewProfile', (tokenId, owner) => console.log(tokenId, owner));
     } catch (err) {
       console.error(err, "minting error");
     }
