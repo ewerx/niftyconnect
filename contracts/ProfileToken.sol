@@ -26,6 +26,7 @@ contract ProfileToken is
     // events
 
     event NewProfile(uint256 tokenId, address owner);
+    event SetAvatar(uint256 tokenId, address avatarContract, uint256 avatarId, string avatarURI);
 
     // functions
 
@@ -57,7 +58,9 @@ contract ProfileToken is
         _avatarInfo.nftContract = avatarContractAddrs;
         _avatarInfo.tokenId = avatarTokenId;
 
-        console.log("avatar: %s/%s => profile %s", avatarContractAddrs, avatarTokenId, niftyTokenId);
+        emit SetAvatar(niftyTokenId, avatarContractAddrs, avatarTokenId, tokenURI(niftyTokenId));
+
+        // console.log("avatar: %s/%s => profile %s", avatarContractAddrs, avatarTokenId, niftyTokenId);
     }
 
     // pass through to avatar contract
