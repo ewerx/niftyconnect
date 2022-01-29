@@ -79,8 +79,9 @@ describe("Profile Graph", () => {
         it("To be fixed: should throw error when unfollow on nonexsiting follow(2)", async function () {
             await profileGraph.mint(account1.address) // 0
             await profileGraph.mint(account2.address) // 1
-            await profileGraph.connect(account1).follow(0, 1)
-            await expect(profileGraph.connect(account1).unfollow(1, 0))
+            await profileGraph.mint(account2.address) // 2
+            await profileGraph.connect(account1).follow(1, 0) // 0 follows 1
+            await expect(profileGraph.connect(account1).unfollow(2, 0))
                 .to.be.revertedWith("not followed");                  
         })
 	});

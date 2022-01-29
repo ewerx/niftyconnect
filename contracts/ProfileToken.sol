@@ -27,7 +27,7 @@ contract ProfileToken is
         uint256 newProfileId = _tokenIds.current();
         _safeMint(to, newProfileId);
 
-        //console.log("Minted profile: %s", newProfileId);
+        // console.log("Minted profile: %s to %s", newProfileId, to);
         emit NewProfile(newProfileId, to);
 
         _tokenIds.increment();
