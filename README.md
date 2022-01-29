@@ -62,8 +62,8 @@ Portal Web3 Social Graph
 
 ## Query via TheGraph
 
-[Subgraph source)[https://github.com/ewerx/niftyconnect-subgraph]
-[Rinkeby Subgraph](https://thegraph.com/hosted-service/subgraph/ewerx/niftyconnect-subgraph)
+- [Subgraph source)[https://github.com/ewerx/niftyconnect-subgraph]
+- [Rinkeby Subgraph](https://thegraph.com/hosted-service/subgraph/ewerx/niftyconnect-subgraph)
 
 ## Trouble Shooting
 
