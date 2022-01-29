@@ -21,6 +21,7 @@ contract ProfileToken is
         address nftContract;
         uint256 tokenId;
     }
+    Avatar private _avatarInfo;
 
     // events
 
@@ -32,13 +33,13 @@ contract ProfileToken is
     }
 
     // contract owner can mint to anyone, anyone can mint to themself, unlimited supply
-    function mint(address to) public returns (uint256) {
+    function mint(address to) external returns (uint256) {
         require(msg.sender == owner() || msg.sender == to, "mint not allowed");
 
         uint256 newProfileId = _tokenIds.current();
         _safeMint(to, newProfileId);
 
-        // console.log("Minted profile: %s to %s", newProfileId, to);
+        //console.log("Minted profile: %s", newProfileId);
         emit NewProfile(newProfileId, to);
 
         _tokenIds.increment();
@@ -46,9 +47,25 @@ contract ProfileToken is
         return newProfileId;
     }
 
-    //TODO: interface to link avatar NFT to profile NFT
+    // associate an avatar with a profile. must be owner of both tokens.
+    function setAvatar(address avatarContractAddrs, uint avatarTokenId, uint niftyTokenId) public {
+        require(msg.sender == ERC721.ownerOf(niftyTokenId), "not profile owner");
 
-    //TODO: override ERC721 methods for fetching metadata to wrap the Avatar
+        ERC721 avatarNFT = ERC721(avatarContractAddrs);
+        require(msg.sender == avatarNFT.ownerOf(avatarTokenId), "not avatar owner");
+
+        _avatarInfo.nftContract = avatarContractAddrs;
+        _avatarInfo.tokenId = avatarTokenId;
+
+        console.log("avatar: %s/%s => profile %s", avatarContractAddrs, avatarTokenId, niftyTokenId);
+    }
+
+    // pass through to avatar contract
+    function tokenURI(uint256 /*tokenId*/) public view virtual override(ERC721) returns (string memory) {
+        //TODO: return a default profile URI if avatar is not set
+        IERC721Metadata avatarNFT = IERC721Metadata(_avatarInfo.nftContract);
+        return avatarNFT.tokenURI(_avatarInfo.tokenId);
+    }
 
     // modifiers
 }
