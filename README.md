@@ -17,6 +17,11 @@ Portal Web3 Social Graph
    npx hardhat test
    ```
 
+   or
+   ```bash
+   npm run hardhat:test
+   ```
+
 ## Running your app locally
 
 1. Start your react frontend
@@ -46,6 +51,14 @@ Portal Web3 Social Graph
    - To configure an account copy its private key from the terminal (i.e the text after `Private Key:`)
    - Open Metamask > Click the account icon on top right > Import Account > Paste the private key you just copied > click Import
    - You should now have the account connected with 10000 ETH
+
+## Deploying
+
+1. Deploy to testnet
+
+   ```bash
+   npm run hardhat:deploy
+   ```
 
 ## What’s Included?
 

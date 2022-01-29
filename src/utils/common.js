@@ -1,7 +1,7 @@
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 
 async function requestAccount() {
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    return window.ethereum.request({ method: "eth_requestAccounts" });
 }
 
 function getContract(contractAddr, artifact) {
@@ -12,4 +12,4 @@ function getContract(contractAddr, artifact) {
     return contract;
 }
 
-export { requestAccount, getContract }
+export { requestAccount, getContract };

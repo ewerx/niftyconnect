@@ -1,9 +1,8 @@
-function App() {
+import React from "react";
+import Dapp from "./components/Dapp";
+
+export default function App() {
   return (
-    <div className="App">
-      Ethereum Fullstack Template
-    </div>
+    <Dapp />
   );
 }
-
-export default App;
