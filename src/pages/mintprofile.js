@@ -23,8 +23,10 @@ export default function MintProfile() {
     try {
       await requestAccount();
       await mint(CONTRACT_ADDR, contractArtifact, window.ethereum.selectedAddress);
+      alert("Minted!!");
       
     } catch (err) {
+      alert("Error minting your token!")
       console.error("handleMint error");
     }
     setMintStatus(true);

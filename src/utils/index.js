@@ -27,10 +27,20 @@ async function mint(contractAddr, artifact, walletAddr) {
     try {
       const transaction = await contract.mint(walletAddr);
       await transaction.wait();
-      contract.on('NewProfile', (tokenId, owner) => console.log(tokenId, owner));
     } catch (err) {
       console.error(err, "minting error");
     }
+
+    contract.on('NewProfile', (tokenId, owner, event) => {
+      // Should be logging the event data. But not working
+      console.log({
+        token: tokenId, 
+        ownedBy: owner, 
+        data: event
+      });
+    });
+
+  
   }
 }
 
