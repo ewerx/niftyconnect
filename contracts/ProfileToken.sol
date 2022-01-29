@@ -23,6 +23,9 @@ contract ProfileToken is
     }
     Avatar private _avatarInfo;
 
+    // mapping between NiftyTokenId and the AvatartokenURIs
+    mapping(uint => string) _tokenURIs;
+
     // events
 
     event NewProfile(uint256 tokenId, address owner);
@@ -57,17 +60,22 @@ contract ProfileToken is
 
         _avatarInfo.nftContract = avatarContractAddrs;
         _avatarInfo.tokenId = avatarTokenId;
+        
+         // Get the TokenURI for the Avatar NFT
+        string memory AvatartokenURI = avatarNFT.tokenURI(avatarTokenId);
 
-        emit SetAvatar(niftyTokenId, avatarContractAddrs, avatarTokenId, tokenURI(niftyTokenId));
+        //  Update the NiftyTokenId to Avatar Map
+        _tokenURIs[niftyTokenId] = AvatartokenURI;
 
-        // console.log("avatar: %s/%s => profile %s", avatarContractAddrs, avatarTokenId, niftyTokenId);
+        emit SetAvatar(niftyTokenId, avatarContractAddrs, avatarTokenId, AvatartokenURI);
     }
 
     // pass through to avatar contract
-    function tokenURI(uint256 /*tokenId*/) public view virtual override(ERC721) returns (string memory) {
-        //TODO: return a default profile URI if avatar is not set
-        IERC721Metadata avatarNFT = IERC721Metadata(_avatarInfo.nftContract);
-        return avatarNFT.tokenURI(_avatarInfo.tokenId);
+    function tokenURI(uint256 tokenId) public view virtual override(ERC721) returns (string memory) {
+
+        require(_exists(tokenId), "Querying for a non existent token");
+
+         return _tokenURIs[tokenId];
     }
 
     // modifiers
