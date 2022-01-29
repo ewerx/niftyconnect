@@ -26,7 +26,7 @@ contract ProfileToken is
     // events
 
     event NewProfile(uint256 tokenId, address owner);
-    event SetAvatar(uint256 tokenId, address avatarContract, uint256 avatarId, string avatarURI);
+    event SetAvatar(uint256 indexed tokenId, address avatarContract, uint256 avatarId, string avatarURI);
 
     // functions
 
