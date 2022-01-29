@@ -82,16 +82,18 @@ contract ProfileToken is ERC721("NiftyConnect", "NFTC"), Ownable {
     }
 
     // pass through to avatar contract
-    function tokenURI(uint256 tokenId)
+    function tokenURI(uint256 niftyTokenId)
         public
         view
         virtual
         override(ERC721)
         returns (string memory)
     {
-        require(_exists(tokenId), "non-existent token");
-        IERC721Metadata avatarNFT = IERC721Metadata(_avatars[tokenId].nftContract);
-        return avatarNFT.tokenURI(_avatars[tokenId].tokenId);
+        require(_exists(niftyTokenId), "non-existent token");
+        // declare an ERC721 interface for the avatar contract 
+        // and call its tokenURI function with the wrapped avatar token ID
+        IERC721Metadata avatarNFT = IERC721Metadata(_avatars[niftyTokenId].nftContract);
+        return avatarNFT.tokenURI(_avatars[niftyTokenId].tokenId);
     }
 
     // modifiers
