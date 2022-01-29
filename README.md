@@ -60,16 +60,10 @@ Portal Web3 Social Graph
    npm run hardhat:deploy
    ```
 
-## What’s Included?
+## Query via TheGraph
 
-Your environment will have following set up:
-
-- A sample frontend: Sample application which uses [Create React App](https://github.com/facebook/create-react-app) along with its test.
-- [Hardhat](https://hardhat.org/): An Ethereum development task runner and testing network.
-- [Mocha](https://mochajs.org/): A JavaScript test runner.
-- [Chai](https://www.chaijs.com/): A JavaScript assertion library.
-- [ethers.js](https://docs.ethers.io/ethers.js/html/): A JavaScript library for interacting with Ethereum.
-- [Waffle](https://github.com/EthWorks/Waffle/): To have Ethereum-specific Chai assertions/mathers.
+[Subgraph source)[https://github.com/ewerx/niftyconnect-subgraph]
+[Rinkeby Subgraph](https://thegraph.com/hosted-service/subgraph/ewerx/niftyconnect-subgraph)
 
 ## Trouble Shooting
 
