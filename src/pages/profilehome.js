@@ -1,32 +1,19 @@
-// profile home page
-
-import * as React from 'react';
-import { Grid } from '@mui/material';
-import Header from '../components/header.js';
-import RecommendProfiles from '../components/recommendprofiles';
-import Socialgraph from '../components/socialgraph.js';
+import { Grid, Container } from '@mui/material';
+import UserTokens from '../components/UserTokens';
 
 export default function ProfileHome () {
   return (
     <>
-      {/* <StyledEngineProvider injectFirst> */}
-      <Header />
-      <Grid
-        container
-        direction='row'
-        justifyContent='center'
-        spacing='50'
-        sx={{ pt: 10 }}
-      >
-        <Grid item md={8} alignItems='center'>
-          <Socialgraph />      {/* Social Graph of the connected user */}
+      <UserTokens accountId='0x7c281214ea57273634b6f22a83958495be66b38e' />
+      {/* <Container maxWidth='xl'>
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+
+          </Grid>
+          <Grid item xs={4} />
+          <Grid item xs={4} />
         </Grid>
-        <Grid item md={4}>
-          <h1>You may know</h1>
-          <RecommendProfiles /> {/* Map users here from subgraph */}
-        </Grid>
-      </Grid>
-      {/* </StyledEngineProvider> */}
+      </Container> */}
     </>
   );
 }

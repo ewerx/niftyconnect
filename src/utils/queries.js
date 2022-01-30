@@ -6,7 +6,7 @@ import { gql } from '@apollo/client';
  * i.e. 0x7c281214ea57273634b6f22a83958495be66b38e
  */
 const userProfiles = gql`
-  query getUserProfiles {
+  query getUserProfiles($accountId: String!) {
     user: users(where: {id: $accountId}) {
       id
       profiles {
@@ -22,7 +22,7 @@ const userProfiles = gql`
  * Pass the property `variables: { tokenId: tokenIdOfUser }` with the query.
  */
 const following = gql`
-  query getFollowing {
+  query getFollowing($tokenId: String!) {
     following: followers(where:{tokenID: $tokenId}) {
       ...fields
     }
@@ -42,7 +42,7 @@ const following = gql`
  * Pass the property `variables: { tokenId: tokenIdOfUser }` with the query.
  */
 const followers = gql`
-  query getFollowers {
+  query getFollowers($tokenId: String!) {
     followers(where:{tokenID: $tokenId}) {
       tokenID
       profile: following {
@@ -52,3 +52,5 @@ const followers = gql`
     }
   }
 `;
+
+export { userProfiles, followers, following };

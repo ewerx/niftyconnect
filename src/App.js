@@ -6,13 +6,10 @@ import ProfileHome from './pages/profilehome.js';
 
 export default function App () {
   return (
-    <>
-
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='mintprofile' element={<MintProfile />} />
-        <Route path='profilehome' element={<ProfileHome />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='mintprofile' element={<MintProfile />} />
+      <Route path='profilehome' element={<ProfileHome />} />
+    </Routes>
   );
 }

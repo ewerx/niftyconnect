@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-require('react-dom');
-window.React2 = require('react');
-// console.log(window.React1 === window.React2);
-
 export default function Connected (props) {
   const status = props.pExists;
 

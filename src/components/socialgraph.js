@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 import { requestAccount } from '../utils/common';
 // import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-export default function Socialgraph () {
+export default function Socialgraph ({ selectedProfileId }) {
   const [account, setAccount] = useState('');
 
   useEffect(() => {
