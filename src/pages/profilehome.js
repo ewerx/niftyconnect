@@ -1,7 +1,6 @@
 
 import { Grid, Container } from '@mui/material';
 import React, {useEffect, useState} from "react";
-import UserTokens from '../components/UserTokens';
 import { requestAccount } from '../utils/common.js';
 import { UserTokens } from '../components/UserTokens';
 
