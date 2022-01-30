@@ -1,13 +1,11 @@
-import React from "react";
-import { Button } from "@mui/material";
+// This component not used anywhere yet
 
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);
+import React from 'react';
+import { Button } from '@mui/material';
 
-export default function CreateProfile() {
+export default function CreateProfile () {
   return (
-    <Button onclick={() => setFollowStatus(initialCount)} variant="outlined">
+    <Button variant='outlined'>
       Create Profile
     </Button>
   );

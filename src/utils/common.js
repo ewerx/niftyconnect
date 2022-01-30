@@ -1,15 +1,15 @@
-import { ethers } from "ethers";
+import { ethers } from 'ethers';
 
-async function requestAccount() {
-    return window.ethereum.request({ method: "eth_requestAccounts" });
+async function requestAccount () {
+  return window.ethereum.request({ method: 'eth_requestAccounts' });
 }
 
-function getContract(contractAddr, artifact) {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(contractAddr, artifact.abi, signer);
+function getContract (contractAddr, artifact) {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(contractAddr, artifact.abi, signer);
 
-    return contract;
+  return contract;
 }
 
 export { requestAccount, getContract };

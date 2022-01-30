@@ -1,8 +1,10 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const SUBGRAPH_API_URL = "https://api.thegraph.com/subgraphs/name/ewerx/niftyconnect-subgraph";
+const SUBGRAPH_API_URL = 'https://api.thegraph.com/subgraphs/name/ewerx/niftyconnect-subgraph';
 
-export default new ApolloClient({
+const client = new ApolloClient({
   uri: SUBGRAPH_API_URL,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });
+
+export { client };
