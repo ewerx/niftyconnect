@@ -1,31 +1,25 @@
-import React, { useState } from "react";
-import { Button } from "@mui/material";
-import { requestAccount } from "../../utils/common.js";
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import { requestAccount } from '../../utils/common.js';
 
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);
+export default function ConnectWallet () {
+  const [connected, setConnected] = useState(false); // MM Wallet connection state
+  const [account, setAccount] = useState('0x');
 
-export default function ConnectWallet() {
-
-  const [connected, setConnected] = useState(false);      // MM Wallet connection state
-  const [account, setAccount] = useState("0x");
- 
-
-  async function handleConnectWallet() {
+  async function handleConnectWallet () {
     const accounts = await requestAccount();
     setConnected(true);
     setAccount(accounts[0]);
   }
 
   return (
-    <>  
-      {/*If MM is not connected render 'Connect Wallet' btn else 'Connected btn'. */}
-       {
+    <>
+      {/* If MM is not connected render 'Connect Wallet' btn else 'Connected btn'. */}
+      {
           !connected
-          ? <Button variant="contained" onClick={handleConnectWallet}>Connect Wallet</Button> 
-          : <Button variant="outlined">{account.substring(0,7)} Connected</Button>                  
-       }     
+            ? <Button variant='contained' onClick={handleConnectWallet}>Connect Wallet</Button>
+            : <Button variant='outlined'>{account.substring(0, 7)} Connected</Button>
+       }
     </>
   );
 }
