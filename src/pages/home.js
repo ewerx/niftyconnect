@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Grid } from '@mui/material';
-// import { Link } from "react-router-dom";
 import Header from '../components/header.js';
 import Connected from '../components/connected.js'; // Connect Wallet Button
 import { getBalance } from '../utils';
@@ -10,7 +9,7 @@ import contractAddress from '../abis/contract-address.json';
 
 export default function Home () {
   const [profileExist, setprofileExist] = useState(false);
-  const [connected, setConnected] = useState(false); // MM Wallet connection state
+  const [connected, setConnected] = useState(false);
   const [account, setAccount] = useState('0x');
 
   const CONTRACT_ADDR = contractAddress.ProfileGraph;

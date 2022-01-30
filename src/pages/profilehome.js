@@ -1,7 +1,9 @@
+
 import { Grid, Container } from '@mui/material';
 import React, {useEffect, useState} from "react";
 import UserTokens from '../components/UserTokens';
 import { requestAccount } from '../utils/common.js';
+import { UserTokens } from '../components/UserTokens';
 
 export default function ProfileHome () {
 
@@ -19,15 +21,6 @@ export default function ProfileHome () {
   return (
     <>
       <UserTokens accountId={address} />
-      {/* <Container maxWidth='xl'>
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-
-          </Grid>
-          <Grid item xs={4} />
-          <Grid item xs={4} />
-        </Grid>
-      </Container> */}
     </>
   );
 }
