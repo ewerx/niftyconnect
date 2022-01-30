@@ -57,6 +57,21 @@ export default function MintProfile () {
     try {
 
       await contract.setAvatar(CONTRACT_ADDR, contractArtifact, avtContract, avtID, tokenID);
+      contract.on('SetAvatar', 
+       (niftyTokenId,
+        avatarContractAddrs,
+        avatarTokenId,
+        avatartokenURI, event) => {
+        // Should be logging the event data.
+        console.log(
+          {
+            niftyID: niftyTokenId, 
+            avConAddr: avatarContractAddrs, 
+            avTId: avatarTokenId,
+            avTURI: avatartokenURI,
+            data: event
+          }); 
+        });
       alert("Avatar is set. Click the button to proceed to your social graph!!");
     } catch (err) {
       console.error('handleMint error');

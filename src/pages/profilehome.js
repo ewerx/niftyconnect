@@ -1,10 +1,24 @@
 import { Grid, Container } from '@mui/material';
+import React, {useEffect, useState} from "react";
 import UserTokens from '../components/UserTokens';
+import { requestAccount } from '../utils/common.js';
 
 export default function ProfileHome () {
+
+  const[address, setAddress] = useState('0x');
+
+  useEffect(() => {
+    async function fetchAccount() {
+      const accounts = await requestAccount();
+      setAddress(accounts[0]);
+    }
+    fetchAccount();
+    
+  }, [address]);
+
   return (
     <>
-      <UserTokens accountId='0x7c281214ea57273634b6f22a83958495be66b38e' />
+      <UserTokens accountId={address} />
       {/* <Container maxWidth='xl'>
         <Grid container spacing={2}>
           <Grid item xs={4}>
