@@ -12,32 +12,24 @@ async function getBalance (contractAddr, artifact, walletAddr) {
   } catch (err) {
     console.error(err, 'follow error');
   }
-
   return balance;
 }
 
-async function mint (contractAddr, artifact, walletAddr) {
-  if (typeof window.ethereum !== 'undefined') {
-    console.log('MetaMask is not installed!');
-    await requestAccount();
+async function mint(contractAddr, artifact) {
+  if (typeof window.ethereum !== "undefined") {
+    console.log("MetaMask is not installed!");
+    const accounts = await requestAccount();
+    const address = accounts[0];
 
     const contract = getContract(contractAddr, artifact);
 
     try {
-      const transaction = await contract.mint(walletAddr);
+      const transaction = await contract.mint(address);
       await transaction.wait();
+      console.log(transaction);
     } catch (err) {
       console.error(err, 'minting error');
     }
-
-    contract.on('NewProfile', (tokenId, owner, event) => {
-      // Should be logging the event data. But not working
-      console.log({
-        token: tokenId,
-        ownedBy: owner,
-        data: event
-      });
-    });
   }
 }
 
